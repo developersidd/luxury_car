@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import {
     Link, Route, Routes
 } from "react-router-dom";
+import SetPageTitle from '../components/SetPageTitle/SetPageTitle';
 import useMongoFirebase from '../Hooks/useMongoFirebase';
 import AddReview from './../components/AddReview/AddReview';
 import LogOut from './../components/LogOut/LogOut';
@@ -38,7 +39,7 @@ const Dashboard = () => {
     }, [firebaseData.email]);
     return (
         <div className="relative">
-
+            <SetPageTitle title="Dashboard" />
             <div className="block lg:hidden">
                 <span onClick={toggleMenu} className="z-10 absolute top-6 bg-white left-10 px-6 py-2 shadow cursor-pointer ">
                     <FontAwesomeIcon className="text-2xl" icon={isOpen ? faTimes : faBars} />
@@ -56,9 +57,9 @@ const Dashboard = () => {
                             <Link to="/dashboard/add_review"> Review </Link>
                         </li>
 
-                        <li>
+                      {/*  <li>
                             <Link to="/dashboard/pay"> Pay </Link>
-                        </li>
+                        </li>*/}
 
                         <li>
                             <Link to="/dashboard/logout"> Logout </Link>

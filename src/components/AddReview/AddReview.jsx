@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import useMongoFirebase from '../../Hooks/useMongoFirebase';
+import SetPageTitle from '../SetPageTitle/SetPageTitle';
 
 const AddReview = () => {
 
@@ -24,6 +25,8 @@ const AddReview = () => {
 
     return (
         <div className="pt-20 px-16">
+                        <SetPageTitle title="Add Review" />
+
             <form onSubmit={handleAddToDb}>
                 {
                     inputData?.slice(10, 12)?.map((item, index) =>

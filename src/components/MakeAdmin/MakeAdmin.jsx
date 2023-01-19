@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import swal from 'sweetalert';
+import SetPageTitle from '../SetPageTitle/SetPageTitle';
 
 const MakeAdmin = () => {
 
@@ -18,6 +19,7 @@ const MakeAdmin = () => {
 
     return (
         <div className="my-20">
+            <SetPageTitle title="Make Admin" />
             <div>
                 <form onSubmit={handleSubmit} className="w-3/6 mx-auto  p-5 shadow rounded">
                     <input className="px-4 py-3 outline-none border-2 w-full mb-4" onChange={(e) => setEmail(e.target.value)} type="text" placeholder="enter email address" />

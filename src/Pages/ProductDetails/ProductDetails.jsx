@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import swal from 'sweetalert';
+import SetPageTitle from '../../components/SetPageTitle/SetPageTitle';
 import useMongoFirebase from '../../Hooks/useMongoFirebase';
 
 const ProductDetails = () => {
@@ -25,8 +26,8 @@ const ProductDetails = () => {
     const handleAddToDb = (e) => {
         e.preventDefault();
         const date = new Date().toLocaleString();
-        const newData = { ...userInfo,  date, displayName,  email, productId: _id, image, name, price };
-        
+        const newData = { ...userInfo, date, displayName, email, productId: _id, image, name, price };
+
         // post to the db of user infomation
         axios.post("https://luxury-car-server-site.vercel.app/add_to_order", newData)
             .then(res => {
@@ -39,6 +40,8 @@ const ProductDetails = () => {
 
     return (
         <div className="container mx-auto px-6 py-10 md:py-20">
+
+            <SetPageTitle title={`${name}`} />
             <div className="flex  flex-col md:flex-row items-center justify-center md:justify-between gap-6">
                 <div className="md:w-1/2">
                     <img className="w-4/5 h-72 mx-auto md:mx-0" src={`data:image/png;base64,${image}`} alt="car-img" />

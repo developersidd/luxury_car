@@ -1,6 +1,7 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from 'react';
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
 import NotFound from './components/NotFound/NotFound';
@@ -26,49 +27,53 @@ function App() {
 
 
   return (
-    <MongoFirebaseProvider>
-      <div className="App">
-        <Router>
-          <Header />
-          <Routes>
-            <Route path="/" element={
-              <Home />
-            } />
+    <HelmetProvider>
 
-            <Route path="/register" element={
-              <RegisterLogin />
-            } />
 
-            <Route path="/explore_cars" element={
-              <ExploreProducts />
-            } />
+      <MongoFirebaseProvider>
+        <div className="App">
+          <Router>
+            <Header />
+            <Routes>
+              <Route path="/" element={
+                <Home />
+              } />
 
-            <Route path="/reviews" element={
-              <Reviews />
-            } />
+              <Route path="/register" element={
+                <RegisterLogin />
+              } />
 
-            <Route path="/faq" element={
-              <FaqPage />
-            } />
+              <Route path="/explore_cars" element={
+                <ExploreProducts />
+              } />
 
-            {/*  Private Route Starts */}
-            <Route path="/*" element={<PrivateRoute />}>
-              <Route path="dashboard/*" element={<Dashboard />} />
-              <Route path="products_details/:id" element={<ProductDetails />} />
-            </Route>
-            {/*  Private Route Ends */}
+              <Route path="/reviews" element={
+                <Reviews />
+              } />
 
-            <Route path="*"
-              element={
-                <NotFound />
-              }
-            />
+              <Route path="/faq" element={
+                <FaqPage />
+              } />
 
-          </Routes>
-          <Footer />
-        </Router>
-      </div>
-    </MongoFirebaseProvider>
+              {/*  Private Route Starts */}
+              <Route path="/*" element={<PrivateRoute />}>
+                <Route path="dashboard/*" element={<Dashboard />} />
+                <Route path="products_details/:id" element={<ProductDetails />} />
+              </Route>
+              {/*  Private Route Ends */}
+
+              <Route path="*"
+                element={
+                  <NotFound />
+                }
+              />
+
+            </Routes>
+            <Footer />
+          </Router>
+        </div>
+      </MongoFirebaseProvider>
+    </HelmetProvider>
 
   );
 }

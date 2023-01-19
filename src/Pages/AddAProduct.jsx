@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SetPageTitle from '../components/SetPageTitle/SetPageTitle';
 import useMongoFirebase from '../Hooks/useMongoFirebase';
 
 const AddAProduct = () => {
@@ -27,14 +28,15 @@ const AddAProduct = () => {
                 if (res.insertedId) {
                     alert("added successfully")
                     //e.target.reset();
-                    }
-            }).catch(error =>{
+                }
+            }).catch(error => {
                 alert(error?.message);
             })
     }
 
     return (
         <div className="p-10">
+            <SetPageTitle title="Add Product" />
             <div className="p-6 shadow-md rounded">
                 <form onSubmit={handleAddProduct}>
                     {

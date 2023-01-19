@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import useMongoFirebase from '../../Hooks/useMongoFirebase';
+import SetPageTitle from '../SetPageTitle/SetPageTitle';
 import DisplayPd from './../DisplayOrders/DisplayPd';
 
 const ManageProducts = () => {
@@ -7,6 +8,7 @@ const ManageProducts = () => {
 
     return (
         <div>
+            <SetPageTitle title="Manage Products" />
             <DisplayPd data={productsData} deleteBtn />
         </div>
     )

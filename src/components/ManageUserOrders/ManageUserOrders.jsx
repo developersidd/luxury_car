@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import DisplayPd from '../DisplayOrders/DisplayPd';
+import SetPageTitle from '../SetPageTitle/SetPageTitle';
 import useMongoFirebase from './../../Hooks/useMongoFirebase';
 
 const ManageUserOrders = () => {
@@ -22,6 +23,7 @@ const ManageUserOrders = () => {
 
     return (
         <div>
+            <SetPageTitle title="Manage Orders" />
             <DisplayPd data={userOrders} isLoading={isLoading} />
         </div>
     )

@@ -1,5 +1,6 @@
 import Faq from "../components/Faq/Faq";
-import img from "../images/faq.svg"
+import SetPageTitle from "../components/SetPageTitle/SetPageTitle";
+import img from "../images/faq.svg";
 
 const FaqPage = () => {
 
@@ -26,6 +27,7 @@ const FaqPage = () => {
 
     return (
         <div className="container mx-auto px-6 py-10 lg:py-20">
+            <SetPageTitle title="FAQ" />
             <h2 className=" mb-8 text-2xl md:text-2xl font-semibold font-permanent-marker text-center lg:text-3xl xl:text-4xl">
                 Read our
                 FAQ </h2>

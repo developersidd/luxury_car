@@ -9,6 +9,7 @@ import Rating from 'react-rating';
 import SwiperCore, { Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar } from 'swiper/core';
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/swiper-bundle.min.css';
+import SetPageTitle from '../SetPageTitle/SetPageTitle';
 import './Reviews.css';
 
 
@@ -25,7 +26,7 @@ const Reviews = () => {
     useEffect(() => {
         axios.get("https://luxury-car-server-site.vercel.app/get_review")
             .then(res => {
-                console.log("reviews",res)
+                console.log("reviews", res)
                 setReviews(res.data);
             })
     }, []);
@@ -33,6 +34,7 @@ const Reviews = () => {
 
     return (
         <div className="review px-6 py-10 lg:py-20">
+            <SetPageTitle title="Review" />
             <h2 className="text-center font-bold font-permanent-marker text-2xl md:text-3xl lg:text-4xl">What people say about us </h2>
             <div>
                 {
@@ -72,7 +74,7 @@ const Reviews = () => {
                                                 <p className="mb-5 text-gray-400">{message} </p>
                                                 <div className="flex items-center gap-4">
                                                     <img className="w-12 h-12 shadow  rounded-full" src={photoURL ? photoURL : "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"}
-                                                     alt="profile" />
+                                                        alt="profile" />
                                                     <h3>{displayName} </h3>
                                                 </div>
                                             </div>

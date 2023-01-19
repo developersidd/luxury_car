@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import Login from '../components/Login/Login';
-import img from '../images/login.svg';
-import Register from './../components/Register/Register';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import useMongoFirebase from '../Hooks/useMongoFirebase';
-import swal from 'sweetalert';
+import React from 'react';
 import { useLocation, useNavigate } from 'react-router';
+import Login from '../components/Login/Login';
+import useMongoFirebase from '../Hooks/useMongoFirebase';
+import img from '../images/login.svg';
+import Register from './../components/Register/Register';
 
 const RegisterLogin = () => {
-    const { firebaseContext: { googleSignIn, signInUser, logOut, signUpUser, isLoading, firebaseError, firebaseData, name, setName } } = useMongoFirebase();
+    const { firebaseContext: { googleSignIn, isLoading,  name, setName } } = useMongoFirebase();
     const btnData = ["Login", "Register"];
 
     const navigate = useNavigate();

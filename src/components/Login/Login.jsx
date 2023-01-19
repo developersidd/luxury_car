@@ -1,20 +1,26 @@
 
-import React, { useState } from 'react'
+import React from 'react';
 import { useNavigate } from 'react-router';
-import useMongoFirebase from '../../Hooks/useMongoFirebase';
 import swal from 'sweetalert';
+import useMongoFirebase from '../../Hooks/useMongoFirebase';
 
 const Login = ({ redirect_Uri }) => {
     const { firebaseContext: { inputData, signInUser, firebaseData, userData, setUserData, handleUserData } } = useMongoFirebase();
 
     const navigate = useNavigate();
 
-    const passwordNotMatched = () => swal("Oppos!", "your password didn't matched", "warning");
-
     const handleLoginSubmit = (e) => {
         e.preventDefault();
-        signInUser(userData?.logingEmail,userData?.logingPassword, userData?.logingPassword2 ,
-            navigate, redirect_Uri, passwordNotMatched);
+        if(userData.loginPassword.length < 6 && userData.loginPassword2.length < 6){
+            return swal("oops!", "password must be grater than 6 character!", "warning");
+           }
+           
+        if(userData.loginPassword !== userData.loginPassword2){
+            return swal("oops!", "password and confirm password didn't mathced!", "warning");
+           }
+
+        signInUser(userData?.logingEmail,userData?.loginPassword, userData?.loginPassword2 ,
+            navigate, redirect_Uri);
     }
 
     return (
@@ -28,7 +34,6 @@ const Login = ({ redirect_Uri }) => {
                 {/*{firebaseError && <p className="text-sm text-red-600">{firebaseError}  </p>}*/}
                 <button className="px-6 py-2 border-2 border-orange-500 rounded shadow mt-3" type="submit">Login </button>
             </form>
-
         </div>
     )
 }

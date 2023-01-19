@@ -13,7 +13,7 @@ const useFirebase = () => {
     const [userData, setUserData] = useState({});
     const [gender, setGender] = useState("");
     const errorMessage = (message) => swal("Oppos!", `${message}`, "warning");
-    const successMessage = () => swal(`Welcome to Luxury Car`, "You are successfully signed", "success");
+    const successMessage = () => swal(`Welcome to Luxury Car`, "You are successfully signed in", "success");
 
     const inputData = [
 
@@ -25,12 +25,12 @@ const useFirebase = () => {
         },
         {
             type: "password",
-            name: "logingPassword",
+            name: "loginPassword",
             placeholder: "password",
         },
         {
             type: "password",
-            name: "logingPassword2",
+            name: "loginPassword2",
             placeholder: "Re-type password",
         },
 
@@ -157,19 +157,11 @@ const useFirebase = () => {
     };
 
     // sign in  
-    const signInUser = (logingEmail, logingPassword, logingPassword2, navigate, redirect_Uri, passwordNotMatched) => {
+    const signInUser = (logingEmail, loginPassword, loginPassword2, navigate, redirect_Uri,) => {
         setIsLoading(true);
-        if (logingPassword !== logingPassword2) {
-            passwordNotMatched();
-            setIsLoading(false);
-            return;
-        }
-
-        signInWithEmailAndPassword(auth, logingEmail, logingPassword)
+        signInWithEmailAndPassword(auth, logingEmail, loginPassword)
             .then(res => {
                 setFirebaseError("");
-                //const data = res.user;
-                //data.gender = gender;
                 setFirebaseData(res.user);
                 successMessage();
                 navigate(redirect_Uri);
@@ -236,7 +228,6 @@ const useFirebase = () => {
             setIsLoading(false);
         })
     }, [])
-
 
     // save user to db
     const saveUser = (name, email, method) => {

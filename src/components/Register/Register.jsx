@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react';
+import swal from 'sweetalert';
 import useMongoFirebase from '../../Hooks/useMongoFirebase';
 
 const Register = () => {
@@ -6,6 +7,9 @@ const Register = () => {
 
     const handleRegisterSubmit = (e) => {
         e.preventDefault();
+        if(userData?.registerPassword.length < 6){
+         return swal("oops!", "password must be grater than 6 character", "warning");
+        }
         signUpUser(userData?.registerName,userData?.registerEmail,userData?.registerPassword,setName);
         e.target.reset();
     }

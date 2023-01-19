@@ -1,0 +1,19 @@
+.car__card .card__content {
+    transition: transform 0.6s ease-in-out;
+}
+
+.car__card:hover .card__content {
+    transform: translateY(-20px);
+}
+
+.car__card:hover .add__to__card {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+
+.add__to__card {
+    transition: all 0.6s ease-in-out;
+    transform: translateY(50px);
+    opacity: 0;
+}

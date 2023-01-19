@@ -1,0 +1,10 @@
+
+.swiper-button-prev {
+    margin-left: -.5rem;
+    color: #FF543F !important;
+}
+
+.swiper-button-next {
+    margin-right: -.5rem;
+    color: #FF543F !important;
+}

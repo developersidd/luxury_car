@@ -1,0 +1,7 @@
+.review .swiper-slide-shadow-right, .swiper-slide-shadow-left{
+background-image: none !important;
+}
+
+.review .swiper-container {
+height: 70vh;
+}
